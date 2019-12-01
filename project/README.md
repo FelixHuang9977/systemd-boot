@@ -8,11 +8,11 @@
 
 If you want to build 'systemd-boot' from scratch, then you'll need to add all [Minimal Linux Live](http://github.com/ivandavidov/minimal "Minimal Linux Live") dependencies and the 'systemd-boot' build dependencies (Ubuntu):
 
-* ``sudo apt install wget make gawk gcc bc xorriso gnu-efi dh-autoreconf``
+* ``sudo apt update && sudo apt install wget make gawk gcc bc xorriso gnu-efi dh-autoreconf``
 
 If you have already built Minimal Linux Live, then you need to add just 2 more build dependencies (Ubuntu):
 
-* ``sudo apt install gnu-efi dh-autoreconf``
+* ``sudo apt update && sudo apt install gnu-efi dh-autoreconf``
 
 These are the steps you need to follow in order to build and install 'systemd-boot':
 
