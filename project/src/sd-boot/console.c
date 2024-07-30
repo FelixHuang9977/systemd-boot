@@ -23,8 +23,10 @@
 #define SYSTEM_FONT_WIDTH 8
 #define SYSTEM_FONT_HEIGHT 19
 
+#ifndef _EFI_CONEX_H
 #define EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL_GUID \
         { 0xdd9e7534, 0x7762, 0x4698, { 0x8c, 0x14, 0xf5, 0x85, 0x17, 0xa6, 0x25, 0xaa } }
+#endif
 
 struct _EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL;
 
@@ -34,7 +36,7 @@ typedef EFI_STATUS (EFIAPI *EFI_INPUT_RESET_EX)(
 );
 
 typedef UINT8 EFI_KEY_TOGGLE_STATE;
-
+#ifndef _EFI_CONEX_H
 typedef struct {
         UINT32 KeyShiftState;
         EFI_KEY_TOGGLE_STATE KeyToggleState;
@@ -44,7 +46,7 @@ typedef struct {
         EFI_INPUT_KEY Key;
         EFI_KEY_STATE KeyState;
 } EFI_KEY_DATA;
-
+//#endif
 typedef EFI_STATUS (EFIAPI *EFI_INPUT_READ_KEY_EX)(
         struct _EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL *This,
         EFI_KEY_DATA *KeyData
@@ -79,6 +81,7 @@ typedef struct _EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL {
         EFI_REGISTER_KEYSTROKE_NOTIFY RegisterKeyNotify;
         EFI_UNREGISTER_KEYSTROKE_NOTIFY UnregisterKeyNotify;
 } EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL;
+#endif
 
 EFI_STATUS console_key_read(UINT64 *key, BOOLEAN wait) {
         EFI_GUID EfiSimpleTextInputExProtocolGuid = EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL_GUID;
